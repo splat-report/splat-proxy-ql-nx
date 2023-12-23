@@ -30,7 +30,7 @@ export default async (req: Request) => {
   }
 }
 
-function createErrorResponse(reason: string | object, options = {status: 400}) {
+function createErrorResponse(reason: string, options = {status: 400}) {
   const body = {reason};
   return Response.json(body, {status: options?.status ?? 400});
 }
@@ -91,8 +91,11 @@ async function fetchQL(query: string, variables = {}, headers = {}) {
     body: JSON.stringify(body),
   });
 
+  if (res.status === 401) {
+    return createErrorResponse("bullet token has expired", {status: 401})
+  }
   if (!res.ok) {
-    return createErrorResponse(await res.json(), {status: res.status})
+    return createErrorResponse((await res.text()) || res.statusText, {status: res.status})
   }
   return Response.json(await res.json(), {
     headers: {

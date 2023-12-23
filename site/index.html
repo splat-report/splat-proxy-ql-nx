@@ -10,9 +10,16 @@
     <p>
       <!-- prettier-ignore -->
       <code>
-POST /token
+POST /ql
 {
-  "sessionToken": "..."
+  "variables": {},
+  "query": "...",
+  "bulletToken": {
+    "bullet": "...",
+    "language": "...",
+    "version": "...",
+    "country": "..."
+  }
 }
       </code>
     </p>
