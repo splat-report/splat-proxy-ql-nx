@@ -1,0 +1,12 @@
+{
+  "name": "splat-proxy-ql-nx",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "devDependencies": {
+    "@netlify/functions": "^2.4.1",
+    "@types/node": "^20.10.4",
+    "netlify-cli": "^17.10.1",
+    "typescript": "^5.3.3"
+  }
+}
